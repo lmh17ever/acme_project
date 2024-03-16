@@ -1,19 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
+  {% for birthday in birthdays %}
+    <div class="row">
+      <div class="col-2">  
+        {% if birthday.image %}
+          <img src="{{ birthday.image.url }}" height="100">
+        {% endif %}
+=======
   {% for birthday in page_obj %}
     <div>
       <div>
         {{ birthday.first_name }} {{ birthday.last_name }} - {{ birthday.birthday }}
+>>>>>>> 7ddbf77d1abbf27d56569664445aa982cc3a4875
       </div>
-      <div>
-        <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a>
-      </div>
-      <div>
-        <a href="{% url 'birthday:delete' birthday.id %}">Удалить запись</a>
+      <div class="col-10">  
+        <div>
+          {{ birthday.first_name }} {{ birthday.last_name }} — {{ birthday.birthday }}
+        </div>      
+        <div>
+          <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> | <a href="{% url 'birthday:delete' birthday.id %}">Удалить запись</a>
+        </div>
       </div>
       {% if not forloop.last %}
-        <hr>
+        <hr class="mt-3"> 
       {% endif %}
     </div>
   {% endfor %}
