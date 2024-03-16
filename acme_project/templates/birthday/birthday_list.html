@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
   {% for birthday in birthdays %}
     <div class="row">
       <div class="col-2">  
         {% if birthday.image %}
           <img src="{{ birthday.image.url }}" height="100">
         {% endif %}
+=======
+  {% for birthday in page_obj %}
+    <div>
+      <div>
+        {{ birthday.first_name }} {{ birthday.last_name }} - {{ birthday.birthday }}
+>>>>>>> 7ddbf77d1abbf27d56569664445aa982cc3a4875
       </div>
       <div class="col-10">  
         <div>
@@ -21,4 +28,5 @@
       {% endif %}
     </div>
   {% endfor %}
+  {% include "includes/paginator.html" %}
 {% endblock %}
