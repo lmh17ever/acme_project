@@ -8,6 +8,13 @@ from .validators import real_age
 User = get_user_model()
 
 
+class Tag(models.Model):
+    tag = models.CharField('Тег', max_length=20)
+
+    def __str__(self):
+        return self.tag
+
+
 class Birthday(models.Model):
     first_name = models.CharField('Имя', max_length=20)
     last_name = models.CharField('Фамилия', blank=True,
@@ -21,6 +28,15 @@ class Birthday(models.Model):
         on_delete=models.CASCADE,
         null=True
         )
+    tags = models.ManyToManyField(
+            Tag,
+            verbose_name='Теги',
+            blank=True,
+            help_text='Удерживайте Ctrl для выбора нескольких вариантов'
+        )
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         constraints = (
@@ -43,6 +59,9 @@ class Congratulation(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         ordering = ('created_at',)

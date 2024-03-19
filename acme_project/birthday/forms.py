@@ -14,7 +14,8 @@ class BirthdayForm(forms.ModelForm):
     class Meta:
         model = Birthday
         exclude = ('author',)
-        widgets = {'birthday': forms.DateInput(attrs={'type': 'date'})}
+        widgets = {'birthday': forms.DateInput(attrs={'type': 'date'}),
+                   'tags': forms.CheckboxSelectMultiple}
 
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
