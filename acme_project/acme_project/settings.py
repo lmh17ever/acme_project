@@ -11,10 +11,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,11 +18,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
     'django_bootstrap5',
     'users.apps.UsersConfig',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -111,3 +107,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
